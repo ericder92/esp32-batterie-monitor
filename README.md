@@ -39,7 +39,7 @@ Dieses Projekt ist ein smarter Batterie-Monitor auf Basis eines ESP32 D1 Mini. E
 - **Alle Parameter über die Weboberfläche einstellbar**:
   - Spannungsteiler-Verhältnis
   - Shunt-Widerstand (in mOhm)
-  - Anfangskapazität der Batterie (z. B. 100Ah)
+  - Anfangskapazität der Batterie (z. B. 180Ah)
 - **Unterspannungswarnung** bei Unterschreiten eines frei definierbaren Schwellenwerts
 - **Webinterface statt Display**:
   - Darstellung und Konfiguration erfolgen per Browser

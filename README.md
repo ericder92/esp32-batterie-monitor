@@ -29,7 +29,7 @@ Dieses Projekt ist ein smarter Batterie-Monitor auf Basis eines ESP32 D1 Mini. E
 
 ## Features
 
-- **Zwei ADS1115 (I2C)**:
+- **Zwei ADS1115 (I2C) **:
   - Einer misst die Batteriespannung (über Spannungsteiler).
   - Der andere misst die Spannung über einen Shunt-Widerstand zur Strommessung.
 - **I2C-Erkennung**:
@@ -55,6 +55,7 @@ Dieses Projekt ist ein smarter Batterie-Monitor auf Basis eines ESP32 D1 Mini. E
 - ESP32 D1 Mini
 - 2x ADS1115 ADCs (I2C)
 - Shunt-Widerstand zur Strommessung
+- Widerstände für den Spannungsteiler zur Spannungsmessung in meinem fall 10 kΩ und 2 kΩ Widerstände (Standard-Spannungsteiler-Verhältnis: 6)
 - Batterie
 - WLAN-Zugang (Router oder Hotspot)
 
@@ -70,6 +71,9 @@ Die beiden ADS1115 benötigen unterschiedliche I2C-Adressen. Diese werden durch 
 Standardmäßige I2C-Pins am ESP32 D1 Mini:
 - **SDA**: GPIO 21
 - **SCL**: GPIO 22
+
+Beide ADS1115-Module sind im differentiellen Modus konfiguriert und messen die Spannung zwischen den Eingängen. 
+ - A0 und A1 
 
 ## Benötigte Bibliotheken
 

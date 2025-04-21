@@ -80,7 +80,10 @@ Die Weboberfläche ermöglicht:
 
 ## Beispiel-Webseite
 
-*(Hier kannst du später einen Screenshot deiner Weboberfläche einfügen.)*
+So sieht die Statistik-Ansicht in der Weboberfläche aus:
+
+![Webinterface Screenshot](screenshot.jpg)
+
 
 ## To-Do / Weiterentwicklungsideen
 

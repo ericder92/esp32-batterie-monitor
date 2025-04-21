@@ -1,3 +1,28 @@
+👋 Hallo! Ich bin Eric (ericder92), ein begeisterter Bastler ohne professionelle Programmierkenntnisse.
+
+⚡ Die Projekte hier – wie z. B. mein ESP32 Batterie-Monitor – sind reine Hobby-Basteleien.
+
+Ich habe mir alles selbst beigebracht und teile meine Ergebnisse, damit andere davon profitieren oder mitbasteln können. 
+
+💬 Mein Englisch ist nicht perfekt, und auch meine Programmierung ist eher "learning by doing" – aber mit viel Leidenschaft.
+
+Alles, was du hier findest, darfst du gerne frei verwenden – nur bitte nicht kommerziell verkaufen.
+
+🔧 Viel Spaß beim Mitbasteln!
+
+
+👋 Hi! I'm Eric (ericder92), a passionate tinkerer with no professional coding background.
+
+⚡ Everything here – like my ESP32 Battery Monitor – is part of a personal DIY hobby project.
+
+I learned everything by doing, and I share my code so others can benefit or build their own versions.
+
+💬 My English isn't perfect, and my code is more "trial and error" – but always with heart.
+
+You’re free to use everything here – just please don’t sell it commercially.
+
+🔧 Have fun tinkering! 
+
 # ESP32 Batterie-Monitor mit Webinterface
 
 Dieses Projekt ist ein smarter Batterie-Monitor auf Basis eines ESP32 D1 Mini. Er misst in Echtzeit Spannung, Strom und die verbleibende Kapazität einer Batterie – ganz ohne Display. Die Bedienung und Anzeige erfolgt vollständig über eine Weboberfläche im lokalen Netzwerk.

@@ -7,7 +7,7 @@
 #include <EEPROM.h>
 
 // WiFi Zugangsdaten
-const char* wifi_ssid = "Dein WLan Name";       // Ihr WLAN Name
+const char* wifi_ssid = "Wlan";       // Ihr WLAN Name
 const char* wifi_password = "Passwort"; // Ihr WLAN Passwort
 
 // Feste IP-Adresse und Hostname
@@ -201,7 +201,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       <span class="unit">%</span>
       <div class="battery-info">
         <div class="battery-info-item">
-          <span>Restkapazit&auml;t:</span>
+          <span>Restkapaz&auml;t:</span>
           <span id="remainingAh">180.00</span>
           <span class="unit">Ah</span>
         </div>
@@ -650,8 +650,8 @@ void setup() {
   }
   
   // Display initialisieren
-  tft.initSPI();
-  tft.setRotation(1); // Landscape
+  tft.begin();  // Initialisiere das Display
+  tft.setRotation(1); // Landscape-Modus
   tft.fillScreen(ST7796S_BLACK);
   tft.setTextColor(ST7796S_WHITE);
   tft.setTextSize(2);
@@ -660,6 +660,8 @@ void setup() {
   tft.setCursor(10, 10);
   tft.print("ESP32 Strommessung");
   tft.drawFastHLine(10, 40, 460, ST7796S_WHITE);
+  
+  Serial.println("Display initialisiert");
   
   // WLAN-Verbindung versuchen
   setupWiFi();
@@ -968,9 +970,13 @@ void updateMeasurements() {
 
 // Funktion zum Aktualisieren des Displays
 void updateDisplay() {
+  // Debug-Ausgabe
+  Serial.println("Aktualisiere Display...");
+  
   // Spannung
   tft.fillRect(10, 60, 460, 30, ST7796S_BLACK);
   tft.setCursor(10, 60);
+  tft.setTextColor(ST7796S_WHITE);
   tft.print("Spannung: ");
   tft.print(voltage, 2);
   tft.print(" V");
@@ -978,6 +984,7 @@ void updateDisplay() {
   // Strom
   tft.fillRect(10, 100, 460, 30, ST7796S_BLACK);
   tft.setCursor(10, 100);
+  tft.setTextColor(ST7796S_WHITE);
   tft.print("Strom: ");
   tft.print(current, 2);
   tft.print(" A");
@@ -985,6 +992,7 @@ void updateDisplay() {
   // Leistung
   tft.fillRect(10, 140, 460, 30, ST7796S_BLACK);
   tft.setCursor(10, 140);
+  tft.setTextColor(ST7796S_WHITE);
   tft.print("Leistung: ");
   tft.print(power, 2);
   tft.print(" W");
@@ -992,13 +1000,21 @@ void updateDisplay() {
   // Verbrauch
   tft.fillRect(10, 180, 460, 30, ST7796S_BLACK);
   tft.setCursor(10, 180);
+  tft.setTextColor(ST7796S_WHITE);
   tft.print("Verbrauch: ");
   tft.print(totalAh, 2);
   tft.print(" Ah");
   
-  // Ladezustand
+  // Ladezustand mit Farbkodierung
   tft.fillRect(10, 220, 460, 30, ST7796S_BLACK);
   tft.setCursor(10, 220);
+  if (stateOfCharge > 50) {
+    tft.setTextColor(ST7796S_GREEN);
+  } else if (stateOfCharge > 20) {
+    tft.setTextColor(ST7796S_YELLOW);
+  } else {
+    tft.setTextColor(ST7796S_RED);
+  }
   tft.print("Ladezustand: ");
   tft.print(stateOfCharge, 1);
   tft.print(" %");
@@ -1006,7 +1022,21 @@ void updateDisplay() {
   // Restkapazität
   tft.fillRect(10, 260, 460, 30, ST7796S_BLACK);
   tft.setCursor(10, 260);
-  tft.print("Restkapazit&auml;t: ");
+  tft.setTextColor(ST7796S_WHITE);
+  tft.print("Restkapazitaet: ");
   tft.print(remainingAh, 2);
   tft.print(" Ah");
+  
+  // Status-Zeile
+  tft.fillRect(10, 300, 460, 30, ST7796S_BLACK);
+  tft.setCursor(10, 300);
+  tft.setTextColor(ST7796S_WHITE);
+  if (wifiConnected) {
+    tft.print("WiFi: ");
+    tft.print(WiFi.localIP());
+  } else {
+    tft.print("WiFi nicht verbunden");
+  }
+  
+  Serial.println("Display aktualisiert");
 }

@@ -104,6 +104,7 @@ Das Display zeigt Live-Daten und die IP-Adresse nach erfolgreicher WLAN-Verbindu
 - Live-Ansicht: ![Screenshot](Screenshot_Liveseite.jpg)  
 - Statistik: ![Screenshot](screenshot.jpg)  
 - Einstellungen: ![Screenshot](Screenshot_Einstellungen.jpg)
+- Display: ![Screenshot](Screenshot_Display.jpg)
 
 ## To-Do / Ideen
 

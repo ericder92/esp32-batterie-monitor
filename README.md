@@ -1,3 +1,5 @@
+👉 [English version](README_EN.md)
+
 👋 Hallo! Ich bin Eric (ericder92), ein begeisterter Bastler ohne professionelle Programmierkenntnisse.
 
 ⚡ Die Projekte hier – wie z. B. mein ESP32 Batterie-Monitor – sind reine Hobby-Basteleien.

@@ -102,6 +102,7 @@ The display shows current values and the IP address after successful Wi-Fi conne
 - Live view: ![Screenshot](Screenshot_Liveseite.jpg)  
 - Statistics: ![Screenshot](screenshot.jpg)  
 - Settings: ![Screenshot](Screenshot_Einstellungen.jpg)
+- Display: ![Screenshot](Screenshot_Display.jpg)
 
 ## To-Do / Ideas
 

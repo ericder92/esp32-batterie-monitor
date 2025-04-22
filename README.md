@@ -109,9 +109,17 @@ Die Weboberfläche ermöglicht:
 
 ## Beispiel-Webseite
 
+So sieht die Startseiten-Ansicht in der Weboberfläche aus:
+
+![Webinterface Screenshot](Screenshot_Liveseite.jpg)
+
 So sieht die Statistik-Ansicht in der Weboberfläche aus:
 
 ![Webinterface Screenshot](screenshot.jpg)
+
+So sieht die Einstellungs-Ansicht in der Weboberläche aus:
+
+![Webinterface Screenshot](Screenshot_Einstellungen.jpg)
 
 
 ## To-Do / Weiterentwicklungsideen

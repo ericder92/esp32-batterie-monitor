@@ -449,9 +449,12 @@ const char stats_html[] PROGMEM = R"rawliteral(
     .button:hover { background-color: #45a049; }
     .home-button { background-color: #2196F3; }
     .home-button:hover { background-color: #0b7dda; }
+    .reset-button { background-color: #f44336; }
+    .reset-button:hover { background-color: #da190b; }
     .gear-icon { position: absolute; top: 20px; right: 20px; font-size: 24px; color: #333; text-decoration: none; }
     .gear-icon:hover { color: #000; }
     .header { position: relative; }
+    .button-container { display: flex; justify-content: space-between; margin-top: 20px; }
   </style>
   <script>
     // Sofort beim Laden der Seite die Daten abrufen
@@ -478,6 +481,20 @@ const char stats_html[] PROGMEM = R"rawliteral(
       };
       xhttp.open("GET", "/statsData", true);
       xhttp.send();
+    }
+
+    function resetStats() {
+      if (confirm("Möchten Sie wirklich alle Statistik-Werte zurücksetzen?")) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            alert("Statistik wurde zurückgesetzt!");
+            getStats(); // Aktualisiere die Anzeige
+          }
+        };
+        xhttp.open("GET", "/resetStats", true);
+        xhttp.send();
+      }
     }
   </script>
 </head>
@@ -520,6 +537,10 @@ const char stats_html[] PROGMEM = R"rawliteral(
       <div class="stat-item">
         <span class="stat-label">Laufzeit:</span>
         <span class="stat-value" id="runtime">0:00:00</span>
+      </div>
+      <div class="button-container">
+        <button class="button home-button" onclick="window.location.href='/'">Zurück</button>
+        <button class="button reset-button" onclick="resetStats()">Statistik zurücksetzen</button>
       </div>
     </div>
   </div>
@@ -598,6 +619,24 @@ void saveSettings() {
   Serial.print("Kritische Spannung: "); Serial.print(CRITICAL_VOLTAGE, 2); Serial.println(" V");
   Serial.print("Shunt-Widerstand: "); Serial.print(SHUNT_RESISTOR, 7); Serial.println(" Ohm");
   Serial.print("Spannungsteiler: "); Serial.print(VOLTAGE_DIVIDER, 2); Serial.println();
+}
+
+// Funktion zum Zurücksetzen der Statistik
+void resetStatistics() {
+  maxVoltage = 0.0;
+  minVoltage = 100.0;
+  maxChargeCurrent = 0.0;
+  maxDischargeCurrent = 0.0;
+  maxPower = 0.0;
+  maxConsumption = 0.0;
+  totalAh = 0.0;
+  startTime = millis();  // Reset der Laufzeit
+  
+  // Ladezustand neu berechnen
+  stateOfCharge = 100.0;
+  remainingAh = batteryCapacity;
+  
+  Serial.println("Statistik wurde zurückgesetzt");
 }
 
 void setup() {
@@ -843,6 +882,11 @@ void setupWebserver() {
     } else {
       server.send(400, "text/plain", errorMsg);
     }
+  });
+  
+  server.on("/resetStats", HTTP_GET, [](){
+    resetStatistics();
+    server.send(200, "text/plain", "OK");
   });
 }
 

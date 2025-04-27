@@ -67,7 +67,7 @@ float remainingAh = 180.0;      // Restkapazität in Ah
 
 // Statistik-Variablen
 float maxVoltage = 0.0;
-float minVoltage = 0.0;
+float minVoltage = 100.0;
 float maxChargeCurrent = 0.0;
 float maxDischargeCurrent = 0.0;
 float maxPower = 0.0;
@@ -777,7 +777,7 @@ void initialisiereSoC() {
 // Funktion zum Zurücksetzen der Statistik
 void resetStatistics() {
   maxVoltage = 0.0;
-  minVoltage = 0.0;
+  minVoltage = 100.0;
   maxChargeCurrent = 0.0;
   maxDischargeCurrent = 0.0;
   maxPower = 0.0;
